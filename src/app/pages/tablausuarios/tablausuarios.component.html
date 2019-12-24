@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                 <table mat-table #table [dataSource]="dataSource">
+                     <ng-container matColumnDef="detalles">
+                         <th mat-header-cell *matHeaderCellDef> detalles </th>
+                         <td mat-cell *matCellDef="let row"> 
+                            <mat-icon (click)="verDatos(row.id)" matTooltip="Ver detalles"
+                            mat-raised-button style="color: rgb(170, 162, 151);">
+                            remove_red_eye
+                          </mat-icon>
+                        </td>
+                     </ng-container>
+                     <!-- <ng-container matColumnDef="id">
+                         <th mat-header-cell *matHeaderCellDef> id </th>
+                         <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                     </ng-container> -->
+                     <ng-container matColumnDef="nombre">
+                         <th mat-header-cell *matHeaderCellDef> nombre </th>
+                         <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+                     </ng-container>
+                     <ng-container matColumnDef="apellido">
+                         <th mat-header-cell *matHeaderCellDef> apellido </th>
+                         <td mat-cell *matCellDef="let row"> {{row.apellido}} </td>
+                     </ng-container>
+                     <ng-container matColumnDef="edad">
+                         <th mat-header-cell *matHeaderCellDef> edad </th>
+                         <td mat-cell *matCellDef="let row"> {{row.edad}} </td>
+                     </ng-container>
+                     <ng-container matColumnDef="peso">
+                         <th mat-header-cell *matHeaderCellDef> peso </th>
+                         <td mat-cell *matCellDef="let row"> {{row.peso}} </td>
+                     </ng-container>
+                     <ng-container matColumnDef="acciones">
+                         <th mat-header-cell *matHeaderCellDef> acciones </th>
+                         <td mat-cell *matCellDef="let row"> {{row.acciones}} </td>
+                     </ng-container>
+                     <tr mat-header-row *matHeaderRowDef="cols"></tr>
+                     <tr mat-row *matRowDef="let row; columns: cols"></tr>
+                 </table>
+            </div>
+        </div>
+    </div>
+</div>
