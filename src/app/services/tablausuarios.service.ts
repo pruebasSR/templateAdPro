@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { UsuarioModel } from '../models/usuarios/usuarios.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,4 +31,27 @@ export class TablausuariosService {
     });
      return usuario;
   };
+
+  postUsuario(usuario: UsuarioModel){
+    return this.http.post(`${this.url}/personas.json`, usuario)
+    .pipe(
+      map( (resp: any) => {
+        usuario.id = resp.name;
+        return usuario;
+      })
+    );
+  }
+  // putUsuario(id: string){
+  //   return this.http.put(`${this.url}/personas/${ id }.json`, usuario);
+  // }
+  putUsuario(usuario: UsuarioModel){
+    const usuarioTemp = {
+      ...usuario // operador spread
+    };
+    delete usuarioTemp.id;
+
+    console.log(usuario.id,'usuario servicio');
+    return this.http.put(`${this.url}/personas/${ usuario.id }.json`, usuarioTemp);
+    
+  }
 }

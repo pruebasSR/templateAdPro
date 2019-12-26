@@ -1,0 +1,61 @@
+<!-- <form class="example-form">
+    <div class="row">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput value="">
+        </mat-form-field> &nbsp;
+        <mat-form-field class="example-full-width">
+            <mat-label>Apellido</mat-label>
+            <input matInput value="">
+        </mat-form-field>&nbsp;
+        <mat-form-field class="example-full-width">
+            <mat-label>Edad</mat-label>
+            <input matInput value="">
+        </mat-form-field>&nbsp;
+        <mat-form-field class="example-full-width">
+            <mat-label>Peso</mat-label>
+            <input matInput value="">
+        </mat-form-field>&nbsp;
+    </div>
+  <div class="row">
+      <div class=" ">
+        <button mat-button style="background-color: lightseagreen; color: white;">Actualizar</button>
+      </div>
+      <div class=" ">
+        <button mat-button style="background-color: maroon; color: white;">Cancelar</button>
+      </div>
+  </div>
+</form> -->
+
+<div class="card">
+    <div class="card-body">
+        <form (ngSubmit)="guardar( f )" #f = "ngForm">
+            <div class="example-container">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput value="" [(ngModel)]="usuario.nombre" name="nombre">
+                </mat-form-field> &nbsp;
+                <mat-form-field class="example-full-width">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput value="" [(ngModel)]="usuario.apellido" name="apellido">
+                </mat-form-field>&nbsp;
+                <mat-form-field class="example-full-width">
+                    <mat-label>Edad</mat-label>
+                    <input matInput value="" [(ngModel)]="usuario.edad" name="edad">
+                </mat-form-field>&nbsp;
+                <mat-form-field class="example-full-width">
+                    <mat-label>Peso</mat-label>
+                    <input matInput value="" [(ngModel)]="usuario.peso" name="peso">
+                </mat-form-field>&nbsp;
+            </div>
+            <div class="row">
+                <div class=" ">
+                  <button mat-button style="background-color: lightseagreen; color: white;">Actualizar</button>
+                </div>&nbsp;&nbsp;
+                <div class=" ">
+                  <button mat-button style="background-color: maroon; color: white;">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

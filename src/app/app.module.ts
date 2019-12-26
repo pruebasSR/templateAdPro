@@ -12,12 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module'; 
 // angular material
 import { MaterialModule } from './material/material.module';
+// import { DatosusuariomodalComponent } from './modals/datosusuariomodal/datosusuariomodal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    // DatosusuariomodalComponent
   ],
   imports: [
     BrowserModule,

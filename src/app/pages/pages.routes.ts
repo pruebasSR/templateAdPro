@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { TablausuariosComponent } from './tablausuarios/tablausuarios.component';
+import { AgregaruserComponent } from './agregaruser/agregaruser.component';
 
 
 const pagesRoutes: Routes = [
@@ -16,6 +17,7 @@ const pagesRoutes: Routes = [
             { path: 'progress', component: ProgressComponent },
             { path: 'graficas1', component: Graficas1Component },
             { path: 'usuarios', component: TablausuariosComponent },
+            { path: 'agregar', component: AgregaruserComponent },
             { path:'', redirectTo: '/dashboard', pathMatch: 'full' },
         ]
     }

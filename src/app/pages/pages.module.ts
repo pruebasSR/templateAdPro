@@ -10,7 +10,12 @@ import { PagesRoutes } from './pages.routes';
 // material
 import { MaterialModule } from './../material/material.module';
 import { TablausuariosComponent } from './tablausuarios/tablausuarios.component';
-
+// modals
+import { DatosusuariomodalComponent } from './datosusuariomodal/datosusuariomodal.component';
+import { ActualizarusuariomodalComponent } from './actualizarusuariomodal/actualizarusuariomodal.component';
+// form
+import { FormsModule } from '@angular/forms';
+import { AgregaruserComponent } from './agregaruser/agregaruser.component';
 
 @NgModule({
     declarations:[
@@ -18,17 +23,26 @@ import { TablausuariosComponent } from './tablausuarios/tablausuarios.component'
         DashboardComponent,
         Graficas1Component,
         ProgressComponent,
-        TablausuariosComponent
+        TablausuariosComponent,
+        DatosusuariomodalComponent,
+        ActualizarusuariomodalComponent,
+        AgregaruserComponent
     ],
     exports:[
         DashboardComponent,
         Graficas1Component,
-        ProgressComponent
+        ProgressComponent,
+        DatosusuariomodalComponent
     ],
     imports:[
         SharedModule,
         PagesRoutes,
-        MaterialModule
-    ]
+        MaterialModule,
+        FormsModule
+    ],
+    entryComponents: [
+        DatosusuariomodalComponent,
+        ActualizarusuariomodalComponent
+     ]
 })
 export class PagesModule { }

@@ -6,10 +6,10 @@
                      <ng-container matColumnDef="detalles">
                          <th mat-header-cell *matHeaderCellDef> detalles </th>
                          <td mat-cell *matCellDef="let row"> 
-                            <mat-icon (click)="verDatos(row.id)" matTooltip="Ver detalles"
-                            mat-raised-button style="color: rgb(170, 162, 151);">
-                            remove_red_eye
-                          </mat-icon>
+                            <mat-icon (click)="openDialog(row.id, row.nombre,row.apellido,row.edad,row.peso)" matTooltip="Ver detalles"
+                                mat-raised-button style="color: rgb(170, 162, 151);">
+                                remove_red_eye
+                            </mat-icon>
                         </td>
                      </ng-container>
                      <!-- <ng-container matColumnDef="id">
@@ -34,7 +34,15 @@
                      </ng-container>
                      <ng-container matColumnDef="acciones">
                          <th mat-header-cell *matHeaderCellDef> acciones </th>
-                         <td mat-cell *matCellDef="let row"> {{row.acciones}} </td>
+                         <td mat-cell *matCellDef="let row"> 
+                            <button mat-icon-button (click)="openDialogAct(row.id, row.nombre,row.apellido,row.edad,row.peso)">
+                                <mat-icon>
+                                    <i class="material-icons" matTooltip="Modificar">
+                                    restore_page
+                                    </i>
+                                </mat-icon>
+                            </button>     
+                        </td>
                      </ng-container>
                      <tr mat-header-row *matHeaderRowDef="cols"></tr>
                      <tr mat-row *matRowDef="let row; columns: cols"></tr>
