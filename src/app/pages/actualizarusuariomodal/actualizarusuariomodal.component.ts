@@ -26,7 +26,6 @@ export class ActualizarusuariomodalComponent implements OnInit {
     this.usuarioService.putUsuario(usuario)
     .subscribe((resp: any) => {
       console.log(resp);
-      
     });
     console.log('holi', usuario.id);
   }

@@ -8,7 +8,7 @@ import { UsuarioModel } from '../models/usuarios/usuarios.model';
 })
 export class TablausuariosService {
   
-  url = 'https://graldata-59a68.firebaseio.com/'
+  url = 'https://dosgral.firebaseio.com/'
   constructor(private http: HttpClient ) { }
   getUsuarios(){
     return this.http.get(`${this.url}/personas.json`).pipe(
@@ -53,5 +53,8 @@ export class TablausuariosService {
     console.log(usuario.id,'usuario servicio');
     return this.http.put(`${this.url}/personas/${ usuario.id }.json`, usuarioTemp);
     
+  }
+  deleteUser(id: string){
+    return this.http.delete(`${this.url}/personas/${ id }.json`);
   }
 }

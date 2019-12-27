@@ -16,6 +16,8 @@ import { ActualizarusuariomodalComponent } from './actualizarusuariomodal/actual
 // form
 import { FormsModule } from '@angular/forms';
 import { AgregaruserComponent } from './agregaruser/agregaruser.component';
+// alert
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
     declarations:[
@@ -38,7 +40,8 @@ import { AgregaruserComponent } from './agregaruser/agregaruser.component';
         SharedModule,
         PagesRoutes,
         MaterialModule,
-        FormsModule
+        FormsModule,
+        SweetAlert2Module
     ],
     entryComponents: [
         DatosusuariomodalComponent,

@@ -26,34 +26,40 @@
       </div>
   </div>
 </form> -->
-
+<div style="margin-bottom: 15px;">
+    <button mat-icon-button routerLink="/dashboard" style="color: rgb(0, 92, 128)">
+        <i class="material-icons">
+            reply
+        </i>
+    </button>
+</div>
 <div class="card">
     <div class="card-body">
         <form (ngSubmit)="guardar( f )" #f = "ngForm">
             <div class="example-container">
                 <mat-form-field class="example-full-width">
                     <mat-label>Nombre</mat-label>
-                    <input matInput value="" [(ngModel)]="usuario.nombre" name="nombre">
+                    <input matInput value="" [(ngModel)]="usuario.nombre" name="nombre" id="nombre" required>
                 </mat-form-field> &nbsp;
                 <mat-form-field class="example-full-width">
                     <mat-label>Apellido</mat-label>
-                    <input matInput value="" [(ngModel)]="usuario.apellido" name="apellido">
+                    <input matInput value="" [(ngModel)]="usuario.apellido" name="apellido" required>
                 </mat-form-field>&nbsp;
                 <mat-form-field class="example-full-width">
                     <mat-label>Edad</mat-label>
-                    <input matInput value="" [(ngModel)]="usuario.edad" name="edad">
+                    <input matInput value="" [(ngModel)]="usuario.edad" name="edad" required>
                 </mat-form-field>&nbsp;
                 <mat-form-field class="example-full-width">
                     <mat-label>Peso</mat-label>
-                    <input matInput value="" [(ngModel)]="usuario.peso" name="peso">
+                    <input matInput value="" [(ngModel)]="usuario.peso" name="peso" required>
                 </mat-form-field>&nbsp;
             </div>
             <div class="row">
                 <div class=" ">
-                  <button mat-button style="background-color: lightseagreen; color: white;">Actualizar</button>
+                  <button mat-button style="background-color: lightseagreen; color: white;">Agregar</button>
                 </div>&nbsp;&nbsp;
                 <div class=" ">
-                  <button mat-button style="background-color: maroon; color: white;">Cancelar</button>
+                  <button routerLink="/dashboard" routerLinkActive="router-link-active"  mat-button style="background-color: maroon; color: white;">Cancelar</button>
                 </div>
             </div>
         </form>

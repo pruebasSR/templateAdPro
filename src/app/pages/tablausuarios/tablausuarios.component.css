@@ -11,3 +11,10 @@ th {
   background-color: rgb(13, 86, 99);
   /* border-radius: 3px; */
 }
+.actions{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
