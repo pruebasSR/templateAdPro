@@ -8,7 +8,8 @@ import { UsuarioModel } from '../models/usuarios/usuarios.model';
 })
 export class TablausuariosService {
   
-  url = 'https://dosgral.firebaseio.com/'
+  url = 'https://dosgral.firebaseio.com/';
+  user: UsuarioModel;
   constructor(private http: HttpClient ) { }
   getUsuarios(){
     return this.http.get(`${this.url}/personas.json`).pipe(
@@ -50,11 +51,18 @@ export class TablausuariosService {
     };
     delete usuarioTemp.id;
 
-    console.log(usuario.id,'usuario servicio');
+    console.log(usuario.id,'usuarioTemp servicio');
     return this.http.put(`${this.url}/personas/${ usuario.id }.json`, usuarioTemp);
     
   }
+  putActInaUsuario(id: string){
+    console.log(id, 'id desde el servicio');
+    return this.http.put(`${this.url}/personas/${ id }.json`, this.user);
+  }
   deleteUser(id: string){
     return this.http.delete(`${this.url}/personas/${ id }.json`);
+  }
+  getUsuarioById(id: string) {
+    return this.http.get(`${this.url}/personas/${ id }.json`);
   }
 }

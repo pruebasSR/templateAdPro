@@ -2,11 +2,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                 <table mat-table #table [dataSource]="dataSource">
+                 <table mat-table #table [dataSource]="dataSource" >
                      <ng-container matColumnDef="detalles">
                          <th mat-header-cell *matHeaderCellDef> detalles </th>
                          <td mat-cell *matCellDef="let row"> 
-                            <mat-icon (click)="openDialog(row.id, row.nombre,row.apellido,row.edad,row.peso)" matTooltip="Ver detalles"
+                            <mat-icon (click)="openDialog(row.id, row.nombre,row.apellido,row.edad,row.status)" matTooltip="Ver detalles"
                                 mat-raised-button style="color: rgb(170, 162, 151);">
                                 remove_red_eye
                             </mat-icon>
@@ -28,9 +28,12 @@
                          <th mat-header-cell *matHeaderCellDef> edad </th>
                          <td mat-cell *matCellDef="let row"> {{row.edad}} </td>
                      </ng-container>
-                     <ng-container matColumnDef="peso">
-                         <th mat-header-cell *matHeaderCellDef> peso </th>
-                         <td mat-cell *matCellDef="let row"> {{row.peso}} </td>
+                     <ng-container matColumnDef="status">
+                         <th mat-header-cell *matHeaderCellDef> status </th>
+                         <td mat-cell *matCellDef="let row"> 
+                            {{row.status}}
+                            <!-- <p *ngIf="row.status == 'activo'">1</p> -->
+                         </td>
                      </ng-container>
                      <ng-container matColumnDef="acciones">
                          <th mat-header-cell *matHeaderCellDef> acciones </th>
@@ -45,7 +48,7 @@
                             <div class="actions">
                                 <button mat-icon-button (click)="openDialogAct(row)">
                                     <mat-icon>
-                                        <i style="color: darkcyan;" class="material-icons" matTooltip="Modificar">
+                                        <i style="color: darkcyan;" class="material-icons" matTooltip="Modificar" >
                                         restore_outliner
                                         </i>
                                     </mat-icon>
@@ -64,7 +67,14 @@
                                         </i>
                                     </mat-icon>
                                 </button>
-                              </div>    
+                                <button (click)="activoInactivo(row)" mat-icon-button>
+                                    <mat-icon>
+                                        <i style="color: rgb(23, 139, 0);" class="material-icons" matTooltip="activo/inactivo">
+                                            done_outline
+                                        </i>
+                                    </mat-icon>
+                                </button>
+                            </div>    
                             <!-- <button mat-icon-button>
                                 <mat-icon>
                                     <i class="material-icons" matTooltip="Modificar">

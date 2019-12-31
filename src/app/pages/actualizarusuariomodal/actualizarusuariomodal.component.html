@@ -1,4 +1,37 @@
-
+<div *ngIf="data">
+    <h2> Details</h2>
+    <div><span>id: </span>{{data.id}}</div>
+    <div>
+        <mat-form-field class="example-full-width">
+      <label>nombre:
+        <input matInput [(ngModel)]="data.nombre" placeholder="nombre"/>
+      </label>
+    </mat-form-field>
+    </div>
+    <div>
+      <label>apellido:
+        <input matInput [(ngModel)]="data.apellido" placeholder="apellido"/>
+      </label>
+    </div>
+    <div>
+      <label>edad:
+        <input matInput [(ngModel)]="data.edad" placeholder="edad"/>
+      </label>
+    </div>
+    <div>
+      <label>status:
+        <input matInput [(ngModel)]="data.status" placeholder="status"/>
+      </label>
+    </div>
+    <!-- <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button> -->
+  </div>
+  <div class="row">
+      <div class=" ">
+        <button (click)="actaulizarUsuario(data)" mat-button style="background-color: lightseagreen; color: white;">Actualizar</button>
+      </div>
+  </div>
+<!-- 
     <mat-form-field class="example-full-width">
         <mat-label>id</mat-label>
         <input matInput value="{{data.id}}" disabled>
@@ -16,14 +49,14 @@
         <input matInput value="{{data.edad}}" >
     </mat-form-field>&nbsp;
     <mat-form-field class="example-full-width">
-        <mat-label>Peso</mat-label>
-        <input matInput value="{{data.peso}}" >
+        <mat-label>Status</mat-label>
+        <input matInput value="{{data.status}}" >
     </mat-form-field>&nbsp;
   <div class="row">
       <div class=" ">
-        <button (click)="actaulizarUsuario(data.id)" mat-button style="background-color: lightseagreen; color: white;">Actualizar</button>
+        <button (click)="actaulizarUsuario(data)" mat-button style="background-color: lightseagreen; color: white;">Actualizar</button>
       </div>
-  </div>
+  </div> -->
 
 <!-- <form (ngSubmit)="actaulizarUsuario( f )" #f = "ngForm" class="example-form">
     <mat-form-field class="example-full-width">

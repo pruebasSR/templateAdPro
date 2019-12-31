@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
@@ -41,7 +42,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
         PagesRoutes,
         MaterialModule,
         FormsModule,
-        SweetAlert2Module
+        SweetAlert2Module,
+        BrowserModule
     ],
     entryComponents: [
         DatosusuariomodalComponent,

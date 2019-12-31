@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatIconModule,
     MatTooltipModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatBadgeModule
   ],
   exports:[
     MatTableModule,
@@ -41,7 +43,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatIconModule,
     MatTooltipModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatBadgeModule
   ]
 })
 export class MaterialModule { }

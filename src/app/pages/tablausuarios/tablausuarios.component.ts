@@ -7,6 +7,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { DatosusuariomodalComponent } from '../datosusuariomodal/datosusuariomodal.component';
 import { ActualizarusuariomodalComponent } from '../actualizarusuariomodal/actualizarusuariomodal.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -31,7 +32,7 @@ export class TablausuariosComponent implements OnInit {
       'nombre',
       'apellido',
       'edad',
-      'peso',
+      'status',
       'acciones'
     ];
     this.getUsuarios();
@@ -39,12 +40,58 @@ export class TablausuariosComponent implements OnInit {
   }
 
   getUsuarios(){
-    this.usuarioService.getUsuarios().subscribe(data => {
-      console.log(data);  
-      this.usuarios = data;
+    // consulta para sacar a los usuarios que estan activos
+
+    this.usuarioService.getUsuarios().pipe(map(result => {
+      return result.filter(data => data.status == 'activo');
+    })).subscribe(resp => {
+      console.log(resp);  
+      this.usuarios = resp;
       this.dataSource = new MatTableDataSource(this.usuarios);
-      this.dataSource.paginator = this.paginator;    
-    }); 
+      this.dataSource.paginator = this.paginator; 
+    })
+    /*Esta es para sacar todos los usuarios*/
+
+    // this.usuarioService.getUsuarios().subscribe(data => { 
+    //   console.log(data);  
+    //   this.usuarios = data;
+    //   this.dataSource = new MatTableDataSource(this.usuarios);
+    //   this.dataSource.paginator = this.paginator;    
+    // }); 
+  }
+  getUsuariosInAct(){
+    this.usuarioService.getUsuarios().pipe(map(result => {
+      return result.filter(data => data.status == 'inactivo');
+    })).subscribe(resp => {
+      console.log(resp);
+
+      
+    })
+  }
+  activoInactivo(usuario: UsuarioModel){
+    Swal.fire({
+      title: "¿Estas seguro?",
+      text: `Se pondrá en status inactivo el usuario`,
+      icon: 'question',
+      showConfirmButton: true,
+      showCancelButton: true
+    }).then( resp => {
+      if (resp.value) {
+        // this.usuarioService.putActInaUsuario(usuario.id).pipe(map(result => {
+        //   return result.
+        // }))
+        Swal.fire({
+          title: "El status ha cambiado",
+          text: "correctamente!",
+          icon: "success"
+        });
+        this.getUsuarios();
+        
+      }else{
+        console.log(resp);  
+        this.getUsuarios();
+      }
+    });
   }
   verDatos(id: string) {
     // this.dialogoService.open(DatosVacantesComponent, {
@@ -55,10 +102,10 @@ export class TablausuariosComponent implements OnInit {
     console.log(id);
     
   }
-  openDialog(id: string, nombre: string, apellido: string, edad: number, peso: string) {
+  openDialog(id: string, nombre: string, apellido: string, edad: number, status: string) {
     const dialogRef = this.dialog.open(DatosusuariomodalComponent, {
       width: '500px',
-       data: {id: id, nombre: nombre, apellido: apellido, edad: edad, peso: peso}
+       data: {id: id, nombre: nombre, apellido: apellido, edad: edad, status: status}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -68,7 +115,7 @@ export class TablausuariosComponent implements OnInit {
   openDialogAct(usuario: UsuarioModel) {
     const dialogRef = this.dialog.open(ActualizarusuariomodalComponent, {
       width: '500px',
-       data: { id: usuario.id, nombre: usuario.nombre, apellido: usuario.apellido, edad: usuario.edad, peso: usuario.peso }
+       data: { id: usuario.id, nombre: usuario.nombre, apellido: usuario.apellido, edad: usuario.edad, status: usuario.status }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

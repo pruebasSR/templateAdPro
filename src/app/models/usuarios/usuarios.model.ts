@@ -3,7 +3,8 @@ export class UsuarioModel {
   nombre: string;
   apellido: string;
   edad: number;
-  peso: string;
+  // peso: string;
+  status: string;
  }
 
 
