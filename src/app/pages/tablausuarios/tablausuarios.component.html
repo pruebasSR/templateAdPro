@@ -2,9 +2,12 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                 <table mat-table #table [dataSource]="dataSource" >
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+                  </mat-form-field>
+                 <table mat-table #table [dataSource]="dataSource" class="centrado">
                      <ng-container matColumnDef="detalles">
-                         <th mat-header-cell *matHeaderCellDef> detalles </th>
+                         <th mat-header-cell *matHeaderCellDef class="centrado"> detalles </th>
                          <td mat-cell *matCellDef="let row"> 
                             <mat-icon (click)="openDialog(row.id, row.nombre,row.apellido,row.edad,row.status)" matTooltip="Ver detalles"
                                 mat-raised-button style="color: rgb(170, 162, 151);">
@@ -17,26 +20,30 @@
                          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
                      </ng-container> -->
                      <ng-container matColumnDef="nombre">
-                         <th mat-header-cell *matHeaderCellDef> nombre </th>
+                         <th mat-header-cell *matHeaderCellDef class="centrado"> nombre </th>
                          <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
                      </ng-container>
                      <ng-container matColumnDef="apellido">
-                         <th mat-header-cell *matHeaderCellDef> apellido </th>
+                         <th mat-header-cell *matHeaderCellDef class="centrado"> apellido </th>
                          <td mat-cell *matCellDef="let row"> {{row.apellido}} </td>
                      </ng-container>
                      <ng-container matColumnDef="edad">
-                         <th mat-header-cell *matHeaderCellDef> edad </th>
+                         <th mat-header-cell *matHeaderCellDef class="centrado"> edad </th>
                          <td mat-cell *matCellDef="let row"> {{row.edad}} </td>
                      </ng-container>
                      <ng-container matColumnDef="status">
-                         <th mat-header-cell *matHeaderCellDef> status </th>
+                         <th mat-header-cell *matHeaderCellDef class="centrado"> status </th>
                          <td mat-cell *matCellDef="let row"> 
-                            {{row.status}}
-                            <!-- <p *ngIf="row.status == 'activo'">1</p> -->
+                            <div class="capsula" *ngIf="row.status == 'activo'">
+                                <p class="capsulaLettra" >{{row.status}}</p>
+                            </div>
+                            <div class="capsulaIn" *ngIf="row.status == 'inactivo'">
+                                <p class="capsulaLettra" >{{row.status}}</p>
+                            </div>
                          </td>
                      </ng-container>
                      <ng-container matColumnDef="acciones">
-                         <th mat-header-cell *matHeaderCellDef> acciones </th>
+                         <th mat-header-cell *matHeaderCellDef class="centrado"> acciones </th>
                          <td mat-cell *matCellDef="let row"> 
                             <!-- <button mat-icon-button (click)="openDialogAct(row.id, row.nombre,row.apellido,row.edad,row.peso)">
                                 <mat-icon>
@@ -67,13 +74,13 @@
                                         </i>
                                     </mat-icon>
                                 </button>
-                                <button (click)="activoInactivo(row)" mat-icon-button>
+                                <!-- <button (click)="activoInactivo(row.id,row.status)" mat-icon-button>
                                     <mat-icon>
                                         <i style="color: rgb(23, 139, 0);" class="material-icons" matTooltip="activo/inactivo">
                                             done_outline
                                         </i>
                                     </mat-icon>
-                                </button>
+                                </button> -->
                             </div>    
                             <!-- <button mat-icon-button>
                                 <mat-icon>

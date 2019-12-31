@@ -1,34 +1,43 @@
-<div *ngIf="data">
-    <h2> Details</h2>
+<div *ngIf="data" style="margin-left: 100px;">
+    <h2> Actualizar datos</h2>
     <div><span>id: </span>{{data.id}}</div>
     <div>
-        <mat-form-field class="example-full-width">
-      <label>nombre:
-        <input matInput [(ngModel)]="data.nombre" placeholder="nombre"/>
-      </label>
+      <mat-form-field class="example-full-width">
+        <label>nombre:
+          <input matInput [(ngModel)]="data.nombre" placeholder="nombre"/>
+        </label>
     </mat-form-field>
     </div>
     <div>
-      <label>apellido:
-        <input matInput [(ngModel)]="data.apellido" placeholder="apellido"/>
-      </label>
+      <mat-form-field class="example-full-width">
+      
+        <label>apellido:
+          <input matInput [(ngModel)]="data.apellido" placeholder="apellido"/>
+        </label>
+      </mat-form-field>
     </div>
     <div>
-      <label>edad:
-        <input matInput [(ngModel)]="data.edad" placeholder="edad"/>
-      </label>
+      <mat-form-field class="example-full-width">
+      
+        <label>edad:
+          <input matInput [(ngModel)]="data.edad" placeholder="edad"/>
+        </label>
+      </mat-form-field>
     </div>
     <div>
-      <label>status:
-        <input matInput [(ngModel)]="data.status" placeholder="status"/>
-      </label>
+      <mat-form-field class="example-full-width">
+      
+        <label>status:
+          <input matInput [(ngModel)]="data.status" placeholder="status"/>
+        </label>
+      </mat-form-field>
     </div>
     <!-- <button (click)="goBack()">go back</button>
     <button (click)="save()">save</button> -->
   </div>
   <div class="row">
       <div class=" ">
-        <button (click)="actaulizarUsuario(data)" mat-button style="background-color: lightseagreen; color: white;">Actualizar</button>
+        <button class="btn-primary" (click)="actaulizarUsuario(data)" mat-button >Actualizar</button>
       </div>
   </div>
 <!-- 

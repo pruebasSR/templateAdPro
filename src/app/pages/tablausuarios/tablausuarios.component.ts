@@ -7,6 +7,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { DatosusuariomodalComponent } from '../datosusuariomodal/datosusuariomodal.component';
 import { ActualizarusuariomodalComponent } from '../actualizarusuariomodal/actualizarusuariomodal.component';
 import { MatPaginator } from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
@@ -23,6 +24,7 @@ export class TablausuariosComponent implements OnInit {
   /** Arreglo para declarar las cabeceras de la tabla. */
   cols: any[];
   @ViewChild (MatPaginator, {static: true}) paginator: MatPaginator;
+  // @ViewChild(MatSort, {static: true}) sort: MatSort;
   constructor( private usuarioService: TablausuariosService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -35,29 +37,32 @@ export class TablausuariosComponent implements OnInit {
       'status',
       'acciones'
     ];
+    // this.dataSource.sort = this.sort;
     this.getUsuarios();
     // this.dataSource.paginator = this.paginator;
   }
-
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   getUsuarios(){
     // consulta para sacar a los usuarios que estan activos
 
-    this.usuarioService.getUsuarios().pipe(map(result => {
-      return result.filter(data => data.status == 'activo');
-    })).subscribe(resp => {
-      console.log(resp);  
-      this.usuarios = resp;
-      this.dataSource = new MatTableDataSource(this.usuarios);
-      this.dataSource.paginator = this.paginator; 
-    })
+    // this.usuarioService.getUsuarios().pipe(map(result => {
+    //   return result.filter(data => data.status == 'activo');
+    // })).subscribe(resp => {
+    //   console.log(resp);  
+    //   this.usuarios = resp;
+    //   this.dataSource = new MatTableDataSource(this.usuarios);
+    //   this.dataSource.paginator = this.paginator; 
+    // })
     /*Esta es para sacar todos los usuarios*/
 
-    // this.usuarioService.getUsuarios().subscribe(data => { 
-    //   console.log(data);  
-    //   this.usuarios = data;
-    //   this.dataSource = new MatTableDataSource(this.usuarios);
-    //   this.dataSource.paginator = this.paginator;    
-    // }); 
+    this.usuarioService.getUsuarios().subscribe(data => { 
+      console.log(data);  
+      this.usuarios = data;
+      this.dataSource = new MatTableDataSource(this.usuarios);
+      this.dataSource.paginator = this.paginator;    
+    }); 
   }
   getUsuariosInAct(){
     this.usuarioService.getUsuarios().pipe(map(result => {
@@ -68,7 +73,7 @@ export class TablausuariosComponent implements OnInit {
       
     })
   }
-  activoInactivo(usuario: UsuarioModel){
+  activoInactivo(id: string, status: string ){
     Swal.fire({
       title: "¿Estas seguro?",
       text: `Se pondrá en status inactivo el usuario`,
@@ -77,9 +82,15 @@ export class TablausuariosComponent implements OnInit {
       showCancelButton: true
     }).then( resp => {
       if (resp.value) {
-        // this.usuarioService.putActInaUsuario(usuario.id).pipe(map(result => {
-        //   return result.
-        // }))
+        console.log(id, 'id de la funcion ', status);
+        this.usuarioService.putActInaUsuario(id, status)
+        .subscribe((res: any) => {
+          console.log('estatus actualizado');  
+        })
+        // this.usuarioService.putUsuario(usuario)
+        //   .subscribe((resp: any) => {
+        //     console.log(resp,'data del actualizarusuariomodel.ts');
+        // });
         Swal.fire({
           title: "El status ha cambiado",
           text: "correctamente!",

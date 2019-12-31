@@ -18,3 +18,21 @@ th {
   align-items: center;
   justify-content: space-around;
 }
+.capsula{
+  background-color: darkgreen;
+  
+  border-radius: 10px;
+}
+.capsulaIn{
+  background-color: rgb(158, 18, 18);
+  
+  border-radius: 10px;
+}
+.capsulaLettra{
+  color: aliceblue;
+  font: bolder;
+  text-align: center;
+}
+.centrado{
+  text-align: center;
+}

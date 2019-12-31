@@ -44,6 +44,9 @@ export class ActualizarusuariomodalComponent implements OnInit {
           if (res.value){
             this.usuarioService.getUsuarios();
             location.reload();
+          }else{
+            this.usuarioService.getUsuarios();
+            location.reload();
           }
         });
         // this.usuarioService.getUsuarios();

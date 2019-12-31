@@ -51,14 +51,19 @@ export class TablausuariosService {
     };
     delete usuarioTemp.id;
 
-    console.log(usuario.id,'usuarioTemp servicio');
+    // console.log(usuario.id,'usuarioTemp servicio');
     return this.http.put(`${this.url}/personas/${ usuario.id }.json`, usuarioTemp);
     
   }
-  putActInaUsuario(id: string){
-    console.log(id, 'id desde el servicio');
-    return this.http.put(`${this.url}/personas/${ id }.json`, this.user);
+  putActInaUsuario(id: string, status: string){
+    console.log('id: ', + + id, + + 'status:', + + status);
+    
+    return this.http.put(`${this.url}/personas/${ id }.json`, status);
   }
+  // putActInaUsuario(id: string){
+  //   console.log(id, 'id desde el servicio');
+  //   return this.http.put(`${this.url}/personas/${ id }.json`, this.user);
+  // }
   deleteUser(id: string){
     return this.http.delete(`${this.url}/personas/${ id }.json`);
   }
