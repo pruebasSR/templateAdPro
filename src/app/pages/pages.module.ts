@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { AgregaruserComponent } from './agregaruser/agregaruser.component';
 // alert
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { GraphComponent } from './graficas1/graph/graph.component';
 
 @NgModule({
     declarations:[
@@ -29,7 +30,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
         TablausuariosComponent,
         DatosusuariomodalComponent,
         ActualizarusuariomodalComponent,
-        AgregaruserComponent
+        AgregaruserComponent,
+        GraphComponent
     ],
     exports:[
         DashboardComponent,

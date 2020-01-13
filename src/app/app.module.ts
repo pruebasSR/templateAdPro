@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module'; 
 // angular material
 import { MaterialModule } from './material/material.module';
+import { PruebaComponent } from './components/prueba/prueba.component';
 // import { DatosusuariomodalComponent } from './modals/datosusuariomodal/datosusuariomodal.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MaterialModule } from './material/material.module';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    PruebaComponent,
     // DatosusuariomodalComponent
   ],
   imports: [

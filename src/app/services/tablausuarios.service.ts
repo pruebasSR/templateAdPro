@@ -7,7 +7,7 @@ import { UsuarioModel } from '../models/usuarios/usuarios.model';
   providedIn: 'root'
 })
 export class TablausuariosService {
-  
+   
   url = 'https://dosgral.firebaseio.com/';
   user: UsuarioModel;
   constructor(private http: HttpClient ) { }

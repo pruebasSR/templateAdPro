@@ -20,12 +20,12 @@ th {
 }
 .capsula{
   background-color: darkgreen;
-  
+  margin-top: 17px;
   border-radius: 10px;
 }
 .capsulaIn{
   background-color: rgb(158, 18, 18);
-  
+  margin-top: 17px;
   border-radius: 10px;
 }
 .capsulaLettra{
@@ -35,4 +35,7 @@ th {
 }
 .centrado{
   text-align: center;
+}
+.mano:hover{
+  cursor: pointer;
 }

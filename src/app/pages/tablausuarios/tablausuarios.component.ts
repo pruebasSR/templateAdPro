@@ -8,7 +8,7 @@ import { DatosusuariomodalComponent } from '../datosusuariomodal/datosusuariomod
 import { ActualizarusuariomodalComponent } from '../actualizarusuariomodal/actualizarusuariomodal.component';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import { map } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -25,7 +25,10 @@ export class TablausuariosComponent implements OnInit {
   cols: any[];
   @ViewChild (MatPaginator, {static: true}) paginator: MatPaginator;
   // @ViewChild(MatSort, {static: true}) sort: MatSort;
-  constructor( private usuarioService: TablausuariosService, public dialog: MatDialog) { }
+  
+  constructor( private usuarioService: TablausuariosService, public dialog: MatDialog) {
+    
+   }
 
   ngOnInit() {
     this.cols = [
@@ -39,6 +42,7 @@ export class TablausuariosComponent implements OnInit {
     ];
     // this.dataSource.sort = this.sort;
     this.getUsuarios();
+    // this.fibo(20);
     // this.dataSource.paginator = this.paginator;
   }
   applyFilter(filterValue: string) {
@@ -47,22 +51,30 @@ export class TablausuariosComponent implements OnInit {
   getUsuarios(){
     // consulta para sacar a los usuarios que estan activos
 
-    // this.usuarioService.getUsuarios().pipe(map(result => {
-    //   return result.filter(data => data.status == 'activo');
-    // })).subscribe(resp => {
-    //   console.log(resp);  
-    //   this.usuarios = resp;
-    //   this.dataSource = new MatTableDataSource(this.usuarios);
-    //   this.dataSource.paginator = this.paginator; 
-    // })
+    this.usuarioService.getUsuarios().pipe(map(result => {
+      return result.filter(data => data.status == 'activo');
+    })).pipe(
+      map(
+        res => {
+          return res.filter(data => data.edad == 23);
+        }
+      )
+    )
+    .subscribe(resp => {
+      console.log(resp);  
+      this.usuarios = resp;
+      this.dataSource = new MatTableDataSource(this.usuarios);
+      this.dataSource.paginator = this.paginator; 
+    })
+
     /*Esta es para sacar todos los usuarios*/
 
-    this.usuarioService.getUsuarios().subscribe(data => { 
-      console.log(data);  
-      this.usuarios = data;
-      this.dataSource = new MatTableDataSource(this.usuarios);
-      this.dataSource.paginator = this.paginator;    
-    }); 
+    // this.usuarioService.getUsuarios().subscribe(data => { 
+    //   console.log(data);  
+    //   this.usuarios = data;
+    //   this.dataSource = new MatTableDataSource(this.usuarios);
+    //   this.dataSource.paginator = this.paginator;    
+    // }); 
   }
   getUsuariosInAct(){
     this.usuarioService.getUsuarios().pipe(map(result => {
@@ -166,6 +178,23 @@ export class TablausuariosComponent implements OnInit {
         console.log(resp);   
       }
     });
+  }
+
+  fibo(num: number) {
+    var fibo1 = 1;
+    var fibo2 = 1;
+    console.log(fibo1);
+    console.log(fibo1);
+    for (let it = 2; it <=num; it++) {
+        fibo2 = fibo1 + fibo2;
+        fibo1 = fibo2 - fibo1;
+     console.log(fibo2);
+     
+    }
+    // var g = 1;
+    // g = 2 +2;
+    // console.log(g);
+    
   }
   
 }
